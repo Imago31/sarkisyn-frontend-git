@@ -1,76 +1,228 @@
-*{
+/* stylelint-disable selector-class-pattern */
+* {
     margin: 0;
     padding: 0;
 }
-.main_wrap{
+
+body {
+    background: #004980;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.main_wrap {
     height: 100vh;
     background: #004980;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
-    font-weight: 400;
 }
-.level_block{
+
+.level_block {
     width: 480px;
     height: 459px;
-    background: #C2F5FF;
+    background: #c2f5ff;
     border-radius: 12px;
     display: flex;
     justify-content: center;
 }
 
-.level_block_title{
+.level_block_title {
     font-size: 40px;
     line-height: 48px;
     text-align: center;
     color: #004980;
 }
-.content_wrap{
-    margin-top: 52px;    
+
+.content_wrap {
+    margin-top: 52px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.level_box{
+
+.level_box {
     display: flex;
     justify-content: center;
-    margin-top: 48px; 
+    margin-top: 48px;
     gap: 24px;
 }
-.level_number{
+
+.level_number {
     width: 98px;
     height: 98px;
-    background: #FFFFFF;
+    background: #fff;
     border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 64px;
     line-height: 72px;
-    color: #0080C1;
+    color: #0080c1;
 }
-.level_block_button{
+
+.level_block_button {
     margin-top: 67px;
     width: 246px;
     height: 50px;
-    background: #7AC100;
+    background: #7ac100;
     border-radius: 12px;
     outline: none;
     border: none;
     font-size: 24px;
     line-height: 32px;
-    color: #ffffff;
+    color: #fff;
     font-family: Arial, Helvetica, sans-serif;
 }
-.level_number:hover{
+
+.level_number:hover {
     cursor: pointer;
     opacity: 0.9;
-    transition: all 0.2;
+    transition: all 0.2s;
 }
-.level_block_button:hover{
+
+.level_block_button:hover {
     cursor: pointer;
     opacity: 0.9;
-    transition: all 0.2;
+    transition: all 0.2s;
+}
+
+.pannel {
+    width: 976px;
+    margin: auto;
+    margin-top: 22px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pannel_button {
+    width: 246px;
+    height: 50px;
+    background: #7ac100;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #fff;
+    margin-top: 40px;
+}
+
+.pannel_button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.2s;
+}
+
+.pannel_timer {
+    display: flex;
+}
+
+.timer_text {
+    font-size: 16px;
+    line-height: 32px;
+    color: #fff;
+    float: right;
+}
+
+.timer_number {
+    font-size: 64px;
+    line-height: 72px;
+    color: #fff;
+}
+
+.dot {
+    font-size: 64px;
+    line-height: 72px;
+    color: #fff;
+    align-self: flex-end;
+}
+
+.cards_block {
+    width: 976px;
+    margin: auto;
+    margin-top: 35px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cards_block img {
+    width: 95px;
+    height: 133px;
+}
+
+.modal_wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_hover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 11000;
+    background: #004980;
+    opacity: 0.8;
+}
+
+.modal {
+    z-index: 12000;
+}
+
+.timer_res{
+    margin-top: 10px;   
+}
+
+.res_icon_win{
+    width: 96px;
+    height: 96px;
+}
+
+.res_icon_lose{
+    width: 91px;
+    height: 91px;
+}
+
+.res_block_title{
+    font-size: 40px;
+    line-height: 48px;
+    color: #004980;
+    margin-top: 4.74px;
+}
+
+.res_block_time_spent{
+    font-size: 24px;
+    line-height: 32px;
+    color: #000;
+    margin-top: 28px;
+}
+
+.res_button{
+    margin-top: 40px;
+}
+
+.res_content_wrap{
+    margin-top: 30px;
+}
+
+.res_timer_number,.res_dot{
+    color: #000;
+}
+
+.modal_wrap_win,.modal_wrap_lose,.cards_open{
+    display: none
 }
