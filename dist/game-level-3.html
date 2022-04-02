@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+<script defer src="bundle.js"></script><link href="main.css" rel="stylesheet"></head>
+<body>
+    <div class="pannel">
+        <div class="pannel_timer">
+            <div class="min_block">
+                <p class="timer_text">min</p>
+                <p class="timer_number min_number">00</p>
+            </div>
+            <p class="dot">.</p>
+            <div class="sec_block">
+                <p class="timer_text">sec</p>
+                <p class="timer_number sec_number">00</p>
+            </div>
+        </div>
+        <button onclick="begin()" class="pannel_button">Начать заново</button>
+    </div>
+
+    <div class="cards_block">
+
+    </div>
+
+<!--modal win-->
+<div class="modal_wrap modal_wrap_win">
+    <div class="modal_hover"></div>
+    <div class="modal modal_win">
+        <div class="level_block">
+            <div class="content_wrap res_content_wrap">
+                <img class="res_icon_win" src="./img/gift.png" alt="icon">
+                <p class="res_block_title">Вы выиграли!</p>
+                <p class="res_block_time_spent">Затраченное время:</p>
+                <div class="pannel_timer timer_res">
+                    <div class="min_block">
+                        <p class="timer_number res_timer_number win_res_min">00</p>
+                    </div>
+                    <p class="dot res_dot">.</p>
+                    <div class="sec_block">
+                        <p class="timer_number res_timer_number win_res_sec">00</p>
+                    </div>
+                </div>
+                <button onclick="winReload()" class="level_block_button res_button">Играть снова</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal lose-->
+<div class="modal_wrap modal_wrap_lose">
+    <div class="modal_hover"></div>
+    <div class="modal modal_win">
+        <div class="level_block">
+            <div class="content_wrap res_content_wrap">
+                <img class="res_icon_lose" src="./img/smile.png" alt="icon">
+                <p class="res_block_title">Вы проиграли!</p>
+                <p class="res_block_time_spent">Затраченное время:</p>
+                <div class="pannel_timer timer_res">
+                    <div class="min_block">
+                        <p class="timer_number res_timer_number lose_res_min">00</p>
+                    </div>
+                    <p class="dot res_dot">.</p>
+                    <div class="sec_block">
+                        <p class="timer_number res_timer_number lose_res_sec">00</p>
+                    </div>
+                </div>
+                <button onclick="winReload()" class="level_block_button res_button">Играть снова</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="no_click_hover"></div>
+
+<script>
+        console.log('click');
+    const cardArr = [
+    
+    {'src': './img/card_1.png','class':'bh-A'},
+    {'src': './img/card_2.png','class':'bh-K'},
+    {'src': './img/card_3.png','class':'bh-Q'},
+    {'src': './img/card_4.png','class':'bh-J'},
+    {'src': './img/card_5.png','class':'bh-10'},
+    {'src': './img/card_6.png','class':'bh-9'},
+    {'src': './img/card_7.png','class':'bh-8'},
+    {'src': './img/card_8.png','class':'bh-7'},
+    {'src': './img/card_9.png','class':'bh-6'},
+        
+    {'src': './img/card_10.png','class':'rh-A'},
+    {'src': './img/card_11.png','class':'rh-K'},
+    {'src': './img/card_12.png','class':'rh-Q'},
+    {'src': './img/card_13.png','class':'rh-J'},
+    {'src': './img/card_14.png','class':'rh-10'},
+    {'src': './img/card_15.png','class':'rh-9'},
+    {'src': './img/card_16.png','class':'rh-8'},
+    {'src': './img/card_17.png','class':'rh-7'},
+    {'src': './img/card_18.png','class':'rh-6'},
+        
+    {'src': './img/card_19.png','class':'rr-A'},
+    {'src': './img/card_20.png','class':'rr-K'},
+    {'src': './img/card_21.png','class':'rr-Q'},
+    {'src': './img/card_22.png','class':'rr-J'},
+    {'src': './img/card_23.png','class':'rr-10'},
+    {'src': './img/card_24.png','class':'rr-9'},
+    {'src': './img/card_25.png','class':'rr-8'},
+    {'src': './img/card_26.png','class':'rr-7'},
+    {'src': './img/card_27.png','class':'rr-6'},
+        
+    {'src': './img/card_28.png','class':'bc-A'},
+    {'src': './img/card_29.png','class':'bc-K'},
+    {'src': './img/card_30.png','class':'bc-Q'},
+    {'src': './img/card_31.png','class':'bc-J'},
+    {'src': './img/card_32.png','class':'bc-10'},
+    {'src': './img/card_33.png','class':'bc-9'},
+    {'src': './img/card_34.png','class':'bc-8'},
+    {'src': './img/card_35.png','class':'bc-7'},
+    {'src': './img/card_36.png','class':'bc-6'},
+    
+]
+
+    const shufflecardArr = cardArr.sort((a, b) => 0.5 - Math.random());
+
+    for(key of shufflecardArr){
+        console.log(key.src);
+        const img_open = document.createElement('img');
+        img_open.setAttribute('src',key.src);
+        img_open.setAttribute('class',key.class);
+        img_open.classList.add('opened');
+        
+        const img_closed = document.createElement('img');
+        img_closed.setAttribute('src','./img/card_back.png');
+        img_closed.classList.add('closed');
+        
+        
+        const cards = document.createElement('div');
+        cards.classList.add('cards');
+        cards.append(img_closed);
+        cards.append(img_open);
+        
+        document.querySelector('.cards_block').append(cards);
+    }
+    
+    const clickArr = [];
+    
+    let i = 0;
+    const closed = document.querySelectorAll('.closed');
+    for(card of closed){
+        card.addEventListener('click',function(event){
+            if(i == 35){
+               document.querySelector('.modal_wrap_win').style='display:flex';
+               document.querySelector('.win_res_min').innerHTML = document.querySelector('.min_number').innerHTML;
+               document.querySelector('.win_res_sec').innerHTML = document.querySelector('.sec_number').innerHTML;
+               event.target.style='display:none';
+               event.target.nextElementSibling.style='display:block';
+               return;
+            }
+            event.target.style='display:none';
+            event.target.nextElementSibling.style='display:block';
+            console.log(event.target.nextElementSibling.className.slice(3));
+            clickArr.push(event.target.nextElementSibling.className.slice(3));  
+                if(clickArr.length == 2){
+                     if(clickArr[0] == clickArr[1]){
+                         clickArr.length = 0;
+                     }
+                     else{
+                        document.querySelector('.modal_wrap_lose').style='display:flex';
+                        document.querySelector('.lose_res_min').innerHTML = document.querySelector('.min_number').innerHTML;
+                        document.querySelector('.lose_res_sec').innerHTML = document.querySelector('.sec_number').innerHTML;
+                     }
+                }
+            i++;
+        });
+    }
+   
+    const card_closed = document.querySelectorAll('.closed');
+    const card_opened = document.querySelectorAll('.opened');
+    setTimeout(function(){
+        for(card of card_closed){
+           card.style='display: none';
+        }
+        for(card of card_opened){
+           card.style='display: block';
+        }
+    },1000);
+    
+    setTimeout(function(){
+        start_timer();
+        document.querySelector('.no_click_hover').style = 'display:none';
+        for(card of card_closed){
+           card.style='display: block';
+        }
+        for(card of card_opened){
+           card.style='display: none';
+        }
+    },5000);
+    
+    function winReload(){
+        window.location.reload();
+    }
+    function begin(){
+        window.location.href = 'index.html';
+    }
+    
+    let sec = 0;
+    let min = 0;
+    const min_number = document.querySelector('.min_number');
+    const sec_number = document.querySelector('.sec_number');
+    function start_timer(){
+        let timer = setInterval(function(){      
+        if(sec == 60){
+            sec = 0; 
+            min++;
+            if(min < 10){
+                min = '0' + min; 
+            } 
+            min_number.innerHTML = min;
+        }
+        sec++;
+        if(sec < 10){
+            sec = '0' + sec; 
+            console.log(sec)
+        } 
+        sec_number.innerHTML = sec;
+        },1000)
+    }
+    
+    
+    </script>
+</body>
+</html>

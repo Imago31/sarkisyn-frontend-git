@@ -1,3 +1,6 @@
+/*!*****************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./css/style.css ***!
+  \*****************************************************************/
 /* stylelint-disable selector-class-pattern */
 * {
     margin: 0;
@@ -249,3 +252,5 @@ body {
     left: 0;
     z-index: 10000
 }
+
+/*# sourceMappingURL=main.css.map*/
